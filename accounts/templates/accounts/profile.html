@@ -1,0 +1,12 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+<h1>Profile List</h1>
+{% for i in users %}
+  <tr>
+    <td>{{i.username}} : {{i.date_joined}}</td>
+  </tr>
+{% endfor %}
+
+{% endblock %}

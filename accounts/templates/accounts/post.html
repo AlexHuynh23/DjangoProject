@@ -1,0 +1,10 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+<h1>Featured Page</h1>
+{% for i in users %}
+  <tr>
+    <td>{{i.name}}</td>
+  </tr>
+{% endfor %}
+{% endblock %}

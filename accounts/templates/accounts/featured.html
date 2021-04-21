@@ -1,0 +1,13 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+<h1>featured</h1>
+{% for i in posts %}
+  <tr>
+    <td>{{i.account}} : {{i.text}}</td>
+  </tr>
+
+{% endfor %}
+
+{% endblock %}
