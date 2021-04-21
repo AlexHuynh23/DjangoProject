@@ -35,6 +35,9 @@ class Post(models.Model):
     likes = models.IntegerField(null=True)
     shares = models.IntegerField(null=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
