@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
+from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-    return HttpResponse('Home page')
+    return render(request, 'accounts/main.html')
 
 def login(request):
     return HttpResponse('Login Page')
