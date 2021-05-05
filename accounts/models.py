@@ -23,7 +23,11 @@ class Post(models.Model):
         ('L', 'Link')
     )
 
-    account = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    account = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE,
+        null=True
+    )
 
     type = models.CharField(max_length=1,null=True, choices=POST_TYPE )
     title = models.CharField(max_length=50, null=True)
@@ -39,7 +43,11 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        null=True
+    )
 
     likes = models.IntegerField(null=True)
     shares = models.IntegerField(null=True)
