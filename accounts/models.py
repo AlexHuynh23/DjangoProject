@@ -1,21 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Profile(AbstractBaseUser):
-    first_name =  models.CharField(max_length=50, null=True)
-    last_name = models.CharField(max_length=50, null=True)
-    username = models.CharField(max_length=50, null=True)
-    email = models.CharField(max_length=50, null=True)
-    password = models.CharField(max_length=50, null=True)
-
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = []
-
-    date_joined = models.DateTimeField(auto_now_add=True, null=True)
-    def __str__(self):
-        return self.username
+class Profile(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        primary_key=True
+    )
+    verified = models.BooleanField(default=False)
+    # If you want to allow a Text or CharField to be empty, use this pairing
+    #   of default="" and blank=True instead of null=True.
+    #   c.f.: https://docs.djangoproject.com/en/3.0/ref/models/fields/#django.db.models.Field.null
+    bio = models.TextField(default="", blank=True)
+    location = models.CharField(max_length=100, default="", blank=True)
 
 class Post(models.Model):
     POST_TYPE = (
