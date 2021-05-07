@@ -51,3 +51,25 @@ class Comment(models.Model):
 
     likes = models.IntegerField(null=True)
     shares = models.IntegerField(null=True)
+
+class Following(models.Model):
+    """
+    This model will allow us to track followers for each user.
+    """
+    follower = models.ForeignKey(
+        User,
+        on_delete = models.CASCADE,
+        null = True,
+        related_name = 'follower',
+    )
+    followed = models.ForeignKey(
+        User,
+        on_delete = models.CASCADE,
+        null = True,
+        related_name = 'followed',
+    )
+
+    def __str__(self):
+        followStr = self.follower.username + " is following "
+        followStr += self.followed.username
+        return followStr
