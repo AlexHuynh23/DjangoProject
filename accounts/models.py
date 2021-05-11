@@ -27,6 +27,12 @@ class Post(models.Model):
         Profile,
         on_delete=models.CASCADE,
         null=True
+    }
+
+    comment = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        null= True
     )
 
     type = models.CharField(max_length=1,null=True, choices=POST_TYPE )
@@ -40,17 +46,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Comment(models.Model):
-    post = models.ForeignKey(
-        Post,
-        on_delete=models.CASCADE,
-        null=True
-    )
-
-    likes = models.IntegerField(null=True)
-    shares = models.IntegerField(null=True)
 
 class Following(models.Model):
     """
