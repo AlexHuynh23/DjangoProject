@@ -15,26 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from django.shortcuts import render
-from django.http import HttpResponse
 
-def home(request):
-    return render(request, 'accounts/main.html')
-
-def login(request):
-    return HttpResponse('Login Page')
-
-def signup(request):
-    return HttpResponse('Sign Up Page')
-
-def contact(request):
-    return HttpResponse('Contact page')
 
 urlpatterns = [
-    path('account/', include('accounts.urls')),
+    path('', include('accounts.urls')),
     path('admin/', admin.site.urls),
-    path('', home),
-    path('about/', contact),
-    path('login/', login),
-    path('signup/', signup),
+    path('admin', admin.site.urls),
 ]

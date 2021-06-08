@@ -17,31 +17,23 @@ class Profile(models.Model):
     location = models.CharField(max_length=100, default="", blank=True)
 
 class Post(models.Model):
-    POST_TYPE = (
-        ('I', 'Image'),
-        ('T', 'Text'),
-        ('L', 'Link')
-    )
-
     account = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         null=True
     )
-
     comment = models.ForeignKey(
         'self',
         on_delete=models.CASCADE,
         null= True
     )
 
-    type = models.CharField(max_length=1,null=True, choices=POST_TYPE )
     title = models.CharField(max_length=50, null=True)
     text= models.CharField(max_length=100, null=True)
 
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    pubDate = models.DateTimeField(auto_now_add=True, null=True)
 
-    likes = models.IntegerField(null=True)
+    likes = models.IntegerField(default=0)
     shares = models.IntegerField(null=True)
 
     def __str__(self):
