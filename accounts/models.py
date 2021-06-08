@@ -24,13 +24,13 @@ class Post(models.Model):
     )
 
     account = models.ForeignKey(
-        Profile,
+        User,
         on_delete=models.CASCADE,
         null=True
-    }
+    )
 
     comment = models.ForeignKey(
-        Post,
+        'self',
         on_delete=models.CASCADE,
         null= True
     )
